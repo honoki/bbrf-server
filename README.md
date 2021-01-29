@@ -1,4 +1,12 @@
 
+## Introduction
+
+The Bug Bounty Reconnaissance Framework (BBRF) is intended to facilitate the workflows of security researchers across multiple devices. This repository contains the source files to deploy a BBRF server. 
+
+For more information about BBRF, read the blog post on https://honoki.net/2020/10/08/introducing-bbrf-yet-another-bug-bounty-reconnaissance-framework/
+
+Once you have deployed a BBRF server, move on to [install the BBRF client here](https://github.com/honoki/bbrf-client/)
+
 ## Installation
 
 ### Docker
@@ -21,7 +29,7 @@ Verify your installation by browsing to http://127.0.0.1:5984/_utils/#database/b
 
 ### Axiom
 
-If you're already using Axiom, deploying is made very easy thanks to @pry0cc
+If you're already using [Axiom](https://github.com/pry0cc/axiom), deploying is made very easy thanks to @pry0cc
 
 ```bash
 # to deploy a new instance and auto deploy bbrf server:
