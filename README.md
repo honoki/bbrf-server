@@ -11,7 +11,7 @@ Once you have deployed a BBRF server, move on to [install the BBRF client here](
 
 ### Docker
 
-This is the recommended way to install the BBRF server. Simply run the [preconfigured docker image](https://hub.docker.com/repository/docker/honoki/bbrf-server) to get started:
+This is the recommended way to install the BBRF server. Simply run the [preconfigured docker image](https://hub.docker.com/r/honoki/bbrf-server) to get started:
 
 ```
 sudo docker run -p 5984:5984 -e COUCHDB_USER=<choose admin username> -e COUCHDB_PASSWORD=<choose admin password> -e BBRF_PASSWORD=<choose bbrf password> honoki/bbrf-server
