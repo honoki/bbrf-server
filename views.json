@@ -48,7 +48,8 @@
       "map": "function (doc) {\n  if(doc.tags) {\n    for(prop in doc.tags) {\n      emit([prop, doc.tags[prop]], [doc.type, doc._id, doc.program])\n    }\n    \n  }\n  if(doc.ips && doc.ips.length > 0) {\n    for(ip in doc.ips) {\n        if(doc.ips[ip].length > 0) emit(['ip', doc.ips[ip]], [doc.type, doc._id, doc.program])\n    }\n  }\n  if(doc.domains) {\n      for(domain in doc.domains) {\n        if(doc.domains[domain].length > 0) emit(['domain', doc.domains[domain]], [doc.type, doc._id, doc.program])\n      }\n  }\n  if(doc.type == 'service') {\n    emit(['ip', doc.ip], [doc.type, doc._id, doc.program])\n    emit(['service', doc.service], [doc.type, doc._id, doc.program])\n    emit(['port', doc.port], [doc.type, doc._id, doc.program])\n  }\n}"
     },
     "services": {
-      "map": "function (doc) {\n  if(doc.type == \"service\")\n  emit(doc.program, doc._id);\n}"
+      "map": "function (doc) {\n  if(doc.type == \"service\")\n  emit(doc.program, doc._id);\n}",
+      "reduce": "_count"
     }
   }
 }
