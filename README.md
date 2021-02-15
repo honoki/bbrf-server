@@ -1,4 +1,5 @@
-
+![Docker Pulls](https://img.shields.io/docker/pulls/honoki/bbrf-server)
+    
 ## Introduction
 
 The Bug Bounty Reconnaissance Framework (BBRF) is intended to facilitate the workflows of security researchers across multiple devices. This repository contains the source files to deploy a BBRF server. 
