@@ -18,7 +18,7 @@ This is the recommended way to install the BBRF server. Simply run the [preconfi
 sudo docker run -p 443:6984 -e COUCHDB_USER=<choose admin username> -e COUCHDB_PASSWORD=<choose admin password> -e BBRF_PASSWORD=<choose bbrf password> honoki/bbrf-server
 ```
 
-Note that this will expose port 443 (https) on your BBRF server to the internet. The Docker image generates a self-signed certificate which it stores in `/etc/couchdb/cert`. You can replace them with "valid" certificates manually if you want to avoid certificate warnings. Alternatively, you can use `-p 80:5984` to expose plain HTTP on port 80, but this is not compatible with the [BBRF dashboard](https://bbrf.me) and is generaly discouraged.
+Note that this will expose port 443 (https) on your BBRF server to the internet. The Docker image generates a self-signed certificate which it stores in `/etc/couchdb/cert`. You can replace them with "valid" certificates manually if you want to avoid certificate warnings. Alternatively, you can use `-p 80:5984` to expose plain HTTP on port 80, but this is not compatible with the [BBRF dashboard](https://bbrf.me) and is generally discouraged.
 
 You can specify your own `BBRF_PASSWORD` or remove it to have one automatically generated:
 
