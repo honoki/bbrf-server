@@ -1,4 +1,5 @@
-![Docker Pulls](https://img.shields.io/docker/pulls/honoki/bbrf-server)
+[![Docker Pulls](https://img.shields.io/docker/pulls/honoki/bbrf-server?style=flat-square)](https://hub.docker.com/r/honoki/bbrf-server)
+[![Twitter Follow](https://img.shields.io/twitter/follow/honoki?style=flat-square)](https://twitter.com/honoki)
     
 ## Introduction
 
