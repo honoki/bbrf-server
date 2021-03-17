@@ -62,7 +62,7 @@ To manually install a CouchDB server and configure it as a BBRF server, this is 
     curl -X PUT $COUCHDB"_users" \
          -u admin:password
          
-    curl -X PUT curl -X PUT $COUCHDB"/_users/org.couchdb.user:bbrf" \
+    curl -X PUT $COUCHDB"/_users/org.couchdb.user:bbrf" \
          -u admin:password \
          -H "Accept: application/json" \
          -H "Content-Type: application/json" \
@@ -93,7 +93,7 @@ To manually install a CouchDB server and configure it as a BBRF server, this is 
     
 * Allow CORS requests from https://bbrf.me to use the dashboard:
     ```bash
-    curl -X PUT $COUCHDB"_node/_local/_config/httpd/enable_cors"
+    curl -X PUT $COUCHDB"_node/_local/_config/httpd/enable_cors" \
          -u admin:password \
          -d '"true"'
     curl -X PUT $COUCHDB"_node/_local/_config/cors/origins" \
