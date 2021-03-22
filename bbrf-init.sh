@@ -23,7 +23,7 @@ curl -X PUT -X PUT $COUCHDB"/_users/org.couchdb.user:bbrf" -u $AUTH \
 curl -X PUT $COUCHDB"bbrf" -u $AUTH -s > /dev/null
 
 # grant access rights to the new database
-curl -X PUT $COUCHDB"bbrf/_security" -u $AUTH -d "{\"admins\": {\"names\": [\"bbrf\"],\"roles\": []}}" -s > /dev/null
+curl -X PUT $COUCHDB"bbrf/_security" -u $AUTH -d "{\"admins\": {\"names\": [\"bbrf\"],\"roles\": []}, \"members\": {\"names\": [\"bbrf\"],\"roles\": []}}" -s > /dev/null
 
 # push bbrf views
 curl -X PUT $COUCHDB"bbrf/_design/bbrf" -u $AUTH -H "Content-Type: application/json" -d @/tmp/views.json -s > /dev/null
