@@ -80,7 +80,7 @@ To manually install a CouchDB server and configure it as a BBRF server, this is 
     ```bash
     curl -X PUT $COUCHDB"bbrf/_security" \
          -u admin:password \
-         -d "{\"admins\": {\"names\": [\"bbrf\"],\"roles\": []}}"
+         -d '{"admins": {"names": [],"roles": []}, "members": {"names": ["bbrf"],"roles": []}}'
     ```
 
 * Download [views.json](views.json) and configure the required views via curl:
