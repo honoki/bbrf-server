@@ -11,7 +11,7 @@
       "map": "function (doc) {\n  if(doc.type == \"program\")\n  emit(doc.disabled, doc.inscope.length, 1);\n}"
     },
     "alerts": {
-      "map": "function (doc) {\n  if(doc.type == \"alert\")\n  emit(doc.program, doc.message);\n}"
+      "map": "function (doc) {\n  if(doc.type == \"alert\")\n  emit(doc.timestamp, [doc.message, doc.source]);\n}"
     },
     "domains_unresolved": {
       "reduce": "_count",
@@ -52,6 +52,9 @@
     "urls_by_program": {
       "reduce": "_count",
       "map": "function (doc) {\n  if (doc.type == \"url\")\n      emit(doc.program, [doc._id, doc.status, doc.content_length, doc.query])\n}"
+    },
+    "tagnames_by_program_doctype": {
+      "map": "function (doc) {\n  for( prop in doc.tags)\n    emit([doc.program ? doc.program : doc._id, doc.type], prop);\n}"
     }
   }
 }
