@@ -56,6 +56,9 @@
     "tagnames_by_program_doctype": {
       "map": "function (doc) {\n  for( prop in doc.tags)\n    emit([doc.program ? doc.program : doc._id, doc.type], prop);\n}"
     },
+    "tagnames_by_doctype": {
+      "map": "function (doc) {\n  for( prop in doc.tags)\n    emit(doc.type, prop);\n}"
+    },
     "program_all_documents": {
       "map": "function (doc) {\n  if(doc.type == 'program')\n    emit(doc._id, doc.type)\n  if(doc.hasOwnProperty('program'))\n    emit(doc.program, doc.type)\n}"
     }
