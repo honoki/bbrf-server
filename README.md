@@ -103,3 +103,7 @@ To manually install a CouchDB server and configure it as a BBRF server, this is 
          -u admin:password \
          -d '"true"'
     ```
+### Update Server
+You can easily update the bbrf server running:
+
+`` bbrf server upgrade``
