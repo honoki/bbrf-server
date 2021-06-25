@@ -2,7 +2,7 @@
 
 sleep 10
 
-COUCHDB=http://localhost:5984/
+COUCHDB=http://bbrf-server_couchdb_1:5984/
 AUTH=$COUCHDB_USER:$COUCHDB_PASSWORD
 
 if [ -z "$BBRF_PASSWORD" ]; then
