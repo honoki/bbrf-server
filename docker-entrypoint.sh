@@ -99,18 +99,11 @@ EOWARN
 	fi
 
 	if [ "$(id -u)" = '0' ]; then
-		# follow the guide on https://docs.couchdb.org/en/latest/config/http.html to setup a self-signed certificate;
-        if [ ! -f "/etc/couchdb/cert/privkey.pem" ]; then
-            # if this file doesn't exist, we're setting up shop for the first time
-            mkdir /etc/couchdb/cert
-            cd /etc/couchdb/cert
-            openssl genrsa > privkey.pem
-            openssl req -new -x509 -key privkey.pem -out couchdb.pem -days 1095 -subj "/C=BE/ST=BBRF/L=BBRF/O=BBRF/CN=bbrf-server"
-            chmod 600 privkey.pem couchdb.pem
-            chown couchdb privkey.pem couchdb.pem
-
+		if [ ! -f "/tmp/setup-complete" ]; then
+            # if this file doesn't exist, we're setting up shop for the first time, so
             # start initializing the couchdb with a delay of 10 seconds
             exec /usr/local/bin/bbrf-init.sh &
+			touch /tmp/setup-complete
         fi
 		exec gosu couchdb "$@"
 	fi
