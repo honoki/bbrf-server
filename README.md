@@ -11,37 +11,16 @@ Once you have deployed a BBRF server, move on to [install the BBRF client here](
 
 ## Installation
 
-Simply clone this repository:
+Start by cloning this repository:
 
 ```bash
 git clone https://github.com/honoki/bbrf-server/
 cd bbrf-server
 ```
 
-Make the required changes to the `docker-compose.yml` by which I mean CHANGE THE DEFAULT PASSWORDS FOR THE LOVE OF GOD!
+Next, make the required changes to the `docker-compose.yml` by which I mean CHANGE THE DEFAULT PASSWORDS FOR THE LOVE OF GOD!
 
-```yml
-version: "3.9"
-services:
-  couchdb:
-    image: honoki/bbrf-server
-    environment:
-      - COUCHDB_USER=admin
-      - COUCHDB_PASSWORD=<your super secure admin password>
-      - BBRF_PASSWORD=<another super secure password>
-  proxy:
-    image: nginx
-    ports:
-     - "443:443"
-    volumes:
-      - ./nginx.conf:/etc/nginx/conf.d/default.conf
-      - ./docker-entrypoint.d/:/docker-entrypoint.d/
-      - ./keys/:/etc/nginx/keys/
-    depends_on:
-      - couchdb
-```
-
-and run
+And finally, run
 
 ```bash
 sudo docker-compose up
