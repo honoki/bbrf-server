@@ -23,7 +23,7 @@ Next, make the required changes to the `docker-compose.yml` by which I mean CHAN
 And finally, run
 
 ```bash
-sudo docker-compose up
+sudo docker-compose up -d
 ```
 
 Note that this will expose port 443 (https) on your BBRF server to the internet. Docker Compose generates a self-signed certificate for the reverse proxy which it persists to the volume `./keys/`. You can replace them with a valid certificate if you want to avoid certificate warnings, see the instructions below.
@@ -41,7 +41,7 @@ The following steps should get you up and running:
 3. Install certbot: `sudo apt install certbot`
 4. If necessary, allow HTTP traffic e.g: `ufw allow 80/tcp`
 5. Run `certbot -d yourdomain.com certonly` and follow the steps;
-6. Copy the generated certificate files to the keys volume: `cp /etc/letsencrypt/live/yourdomain.com/{cert.pem,privkey.pem} ./keys/`
-7. Restart your containers: `sudo docker-compose up`
+6. Copy the generated certificate files to the keys volume: `cp /etc/letsencrypt/live/yourdomain.com/{fullchain.pem,privkey.pem} ./keys/`
+7. Restart your containers: `sudo docker-compose up -d`
 
 Browse to `https://yourdomain.com/_utils/#database/bbrf/_all_docs` to validate the setup.
