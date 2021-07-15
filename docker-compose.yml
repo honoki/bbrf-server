@@ -8,9 +8,7 @@ services:
       - COUCHDB_PASSWORD=admin  # please please please replace this with a secure password
       - BBRF_PASSWORD=bbrf # please please please replace this with a secure password
     volumes:
-      - ./config/couchdb/local.ini:/etc/local.ini
       - ./data/couchdb/1:/opt/couchdb/data
-      #- ./config/couchdb:/opt/couchdb/etc/local.d
   proxy:
     image: nginx
     hostname: proxy
