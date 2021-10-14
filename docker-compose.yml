@@ -4,7 +4,7 @@ services:
     hostname: couchdb
     image: honoki/bbrf-server
     environment:
-      - COUCHDB_USER=admin
+      - COUCHDB_USER={USERNAME}
       - COUCHDB_PASSWORD={PASSWORD}  # please please please replace this with a secure password
       - BBRF_PASSWORD={PASSWORD} # please please please replace this with a secure password
     volumes:
