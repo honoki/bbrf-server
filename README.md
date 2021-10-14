@@ -45,3 +45,6 @@ The following steps should get you up and running:
 7. Restart your containers: `sudo docker-compose up -d`
 
 Browse to `https://yourdomain.com/_utils/#database/bbrf/_all_docs` to validate the setup.
+
+
+
