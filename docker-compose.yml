@@ -5,15 +5,15 @@ services:
     image: honoki/bbrf-server
     environment:
       - COUCHDB_USER=admin
-      - COUCHDB_PASSWORD=admin  # please please please replace this with a secure password
-      - BBRF_PASSWORD=bbrf # please please please replace this with a secure password
+      - COUCHDB_PASSWORD={PASSWORD}  # please please please replace this with a secure password
+      - BBRF_PASSWORD={PASSWORD} # please please please replace this with a secure password
     volumes:
       - ./data/couchdb/1:/opt/couchdb/data
   proxy:
     image: nginx
     hostname: proxy
     ports:
-     - "443:443"
+     - "80:80"
     volumes:
       - ./proxy/nginx.conf:/etc/nginx/conf.d/default.conf
       - ./proxy/docker-entrypoint.d/:/docker-entrypoint.d/
