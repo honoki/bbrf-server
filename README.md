@@ -41,7 +41,7 @@ The following steps should get you up and running:
 3. Install certbot: `sudo apt install certbot`
 4. If necessary, allow HTTP traffic e.g: `ufw allow 80/tcp`
 5. Run `certbot -d yourdomain.com certonly` and follow the steps;
-6. Copy the generated certificate files to the keys volume: `cp /etc/letsencrypt/live/yourdomain.com/{fullchain.pem,privkey.pem} ./keys/`
+6. Copy the generated certificate files to the keys volume: `cp /etc/letsencrypt/live/yourdomain.com/{fullchain.pem,privkey.pem} ./proxy/keys/`
 7. Restart your containers: `sudo docker-compose up -d`
 
 Browse to `https://yourdomain.com/_utils/#database/bbrf/_all_docs` to validate the setup.
