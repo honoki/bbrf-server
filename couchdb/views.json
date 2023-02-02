@@ -61,6 +61,9 @@
     },
     "program_all_documents": {
       "map": "function (doc) {\n  if(doc.type == 'program')\n    emit(doc._id, doc.type)\n  if(doc.hasOwnProperty('program'))\n    emit(doc.program, doc.type)\n}"
+    },
+    "domains_resolved_exclude_private": {
+      "map": "function (doc) {\n  if(doc.type == \"domain\" && doc.ips.length > 0) {\n    var skip = false;\n    for(ip in doc.ips) {\n      var i = doc.ips[ip].split(\".\");\n      if(i[0] == \"10\" || (i[0] == \"192\" && i[1] == \"168\") || (i[0] === '172' && (parseInt(i[1], 10) >= 16 && i(parts[1], 10) <= 31)) ) {\n        skip = true;\n        break;\n      }\n    }\n    if (!skip) emit(doc.program, doc._id);\n  }\n}"
     }
   }
 }

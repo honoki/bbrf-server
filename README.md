@@ -1,5 +1,5 @@
 [![Docker Pulls](https://img.shields.io/docker/pulls/honoki/bbrf-server?style=flat-square)](https://hub.docker.com/r/honoki/bbrf-server)
-[![Twitter Follow](https://img.shields.io/twitter/follow/honoki?style=flat-square)](https://twitter.com/honoki)
+[![Mastodon](https://img.shields.io/mastodon/follow/108729222194496362?domain=https%3A%2F%2Fmastodon.social&style=flat-square)](https://mastodon.social/@honoki)
     
 ## Introduction
 
