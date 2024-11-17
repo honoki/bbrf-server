@@ -46,3 +46,10 @@ The following steps should get you up and running:
 7. Restart your containers: `sudo docker-compose up -d`
 
 Browse to `https://yourdomain.com/_utils/#database/bbrf/_all_docs` to validate the setup.
+
+## See also
+
+* [BBRF Client](https://github.com/honoki/bbrf-client)
+* [BBRF Dashboard](https://github.com/honoki/bbrf-dashboard)
+* [BBRF Burp Plugin](https://github.com/honoki/bbrf-burp-plugin)
+* [BBRF Agents](https://github.com/honoki/bbrf-agents)
