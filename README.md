@@ -34,19 +34,30 @@ Note that this will expose port 443 (https) on your BBRF server to the internet.
 
 Verify your installation by browsing to https://127.0.0.1/_utils/#database/bbrf/_all_docs
 
-## Generate certificate with Letsencrypt
+## Generate certificate with Let's Encrypt
+To configure your BBRF server with a valid certificate using Caddy, follow these steps:
 
-To configure your BBRF server with a valid certificate, it suffices to generate the cert files with `certbot` and place them in the `keys` directory. The keys will be picked up when you next start the containers.
+1. Make sure you have a domain name pointed to your BBRF server.
+3. In the `Caddyfile`, set your domain and uncomment these lines:
 
-The following steps should get you up and running:
+    ```
+    yourdomain.com {
+        reverse_proxy couchdb:5984
+        encode gzip
+        request_body {
+            max_size 4GB
+        }
+    }
+    ```
 
-1. Ensure you have a domain name pointed to your BBRF server;
-2. If you are still in docker-compose, stop the containers with `ctrl+C`;
-3. Install certbot: `sudo apt install certbot`
-4. If necessary, allow HTTP traffic e.g: `ufw allow 80/tcp`
-5. Run `certbot -d yourdomain.com certonly` and follow the steps;
-6. Copy the generated certificate files to the keys volume: `cp /etc/letsencrypt/live/yourdomain.com/{fullchain.pem,privkey.pem} ./proxy/keys/`
-7. Restart your containers: `sudo docker compose up -d`
+3. Caddy will automatically obtain and renew TLS certificates from Let's Encrypt for your domain.
+5. Start or restart your containers:
+
+    ```bash
+    sudo docker compose up -d
+    ```
+
+Caddy will handle certificate management automatically. You can now access your BBRF server securely at `https://yourdomain.com/_utils/#database/bbrf/_all_docs`.
 
 Browse to `https://yourdomain.com/_utils/#database/bbrf/_all_docs` to validate the setup.
 

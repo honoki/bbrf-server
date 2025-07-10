@@ -1,0 +1,17 @@
+# For development/self-signed (localhost)
+localhost {
+    reverse_proxy couchdb:5984
+    encode gzip
+    request_body {
+        max_size 4GB
+    }
+}
+
+# For production with your domain
+# yourdomain.com {
+#     reverse_proxy couchdb:5984
+#     encode gzip
+#     request_body {
+#         max_size 4GB
+#     }
+# }

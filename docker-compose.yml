@@ -8,14 +8,19 @@ services:
       - BBRF_PASSWORD=bbrf # please please please replace this with a secure password
     volumes:
       - ./data/couchdb/1:/opt/couchdb/data
-  proxy:
-    image: nginx
-    hostname: proxy
+  caddy:
+    image: caddy:2
+    hostname: caddy
     ports:
-     - "443:443"
+      - "80:80"
+      - "443:443"
     volumes:
-      - ./proxy/nginx.conf:/etc/nginx/conf.d/default.conf
-      - ./proxy/docker-entrypoint.d/:/docker-entrypoint.d/
-      - ./proxy/keys/:/etc/nginx/keys/
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
     depends_on:
       - couchdb
+
+volumes:
+  caddy_data:
+  caddy_config:
