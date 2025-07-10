@@ -72,9 +72,24 @@ if [ "$1" = '/opt/couchdb/bin/couchdb' ]; then
 
 	if [ "$COUCHDB_SECRET" ]; then
 		# Set secret only if not already present
-		if ! grep -Pzoqr "\[couch_httpd_auth\]\nsecret =" /opt/couchdb/etc/local.d/*.ini /opt/couchdb/etc/local.ini; then
-			printf "\n[couch_httpd_auth]\nsecret = %s\n" "$COUCHDB_SECRET" >> /opt/couchdb/etc/local.d/docker.ini
+		if ! grep -Pzoqr "\[chttpd_auth\]\nsecret =" /opt/couchdb/etc/local.d/*.ini /opt/couchdb/etc/local.ini; then
+			printf "\n[chttpd_auth]\nsecret = %s\n" "$COUCHDB_SECRET" >> /opt/couchdb/etc/local.d/docker.ini
 		fi
+	fi
+
+	if [ "$COUCHDB_ERLANG_COOKIE" ]; then
+		cookieFile='/opt/couchdb/.erlang.cookie'
+		if [ -e "$cookieFile" ]; then
+			if [ "$(cat "$cookieFile" 2>/dev/null)" != "$COUCHDB_ERLANG_COOKIE" ]; then
+				echo >&2
+				echo >&2 "warning: $cookieFile contents do not match COUCHDB_ERLANG_COOKIE"
+				echo >&2
+			fi
+		else
+			echo "$COUCHDB_ERLANG_COOKIE" > "$cookieFile"
+		fi
+		chown couchdb:couchdb "$cookieFile"
+		chmod 600 "$cookieFile"
 	fi
 
 	if [ "$(id -u)" = '0' ]; then
@@ -105,7 +120,8 @@ EOWARN
             exec /usr/local/bin/bbrf-init.sh &
 			touch /tmp/setup-complete
         fi
-		exec gosu couchdb "$@"
+		export HOME=$(echo ~couchdb)
+		exec setpriv --reuid=couchdb --regid=couchdb --clear-groups "$@"
 	fi
 fi
 

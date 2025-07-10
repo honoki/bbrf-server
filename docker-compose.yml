@@ -1,8 +1,7 @@
-version: "3.9"
 services:
   couchdb:
     hostname: couchdb
-    image: honoki/bbrf-server
+    image: honoki/bbrf-server:latest
     environment:
       - COUCHDB_USER=admin
       - COUCHDB_PASSWORD=admin  # please please please replace this with a secure password
