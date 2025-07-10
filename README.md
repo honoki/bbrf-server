@@ -1,4 +1,3 @@
-[![Docker Pulls](https://img.shields.io/docker/pulls/honoki/bbrf-server?style=flat-square)](https://hub.docker.com/r/honoki/bbrf-server)
 [![Mastodon](https://img.shields.io/mastodon/follow/110779442452085429?domain=https%3A%2F%2Finfosec.exchange&style=flat-square&logo=mastodon&logoColor=fff)](https://infosec.exchange/@honoki)
 [![BlueSky](https://img.shields.io/badge/@honoki.net-0285FA?logo=bluesky&logoColor=fff&style=flat-square)](https://bsky.app/profile/honoki.net)
     
@@ -19,12 +18,16 @@ git clone https://github.com/honoki/bbrf-server/
 cd bbrf-server
 ```
 
-Next, make the required changes to the `docker-compose.yml` by which I mean CHANGE THE DEFAULT PASSWORDS FOR THE LOVE OF GOD!
+**⚠️ IMPORTANT: Change the default passwords!**
 
-And finally, run
+Edit the `docker-compose.yml` file and replace the default passwords:
+- `COUCHDB_PASSWORD=admin` - Change this to a strong password
+- `BBRF_PASSWORD=bbrf` - Change this to a strong password
+
+Build and start the containers:
 
 ```bash
-sudo docker-compose up -d
+sudo docker compose up -d
 ```
 
 Note that this will expose port 443 (https) on your BBRF server to the internet. Docker Compose generates a self-signed certificate for the reverse proxy which it persists to the volume `./keys/`. You can replace them with a valid certificate if you want to avoid certificate warnings, see the instructions below.
@@ -43,7 +46,7 @@ The following steps should get you up and running:
 4. If necessary, allow HTTP traffic e.g: `ufw allow 80/tcp`
 5. Run `certbot -d yourdomain.com certonly` and follow the steps;
 6. Copy the generated certificate files to the keys volume: `cp /etc/letsencrypt/live/yourdomain.com/{fullchain.pem,privkey.pem} ./proxy/keys/`
-7. Restart your containers: `sudo docker-compose up -d`
+7. Restart your containers: `sudo docker compose up -d`
 
 Browse to `https://yourdomain.com/_utils/#database/bbrf/_all_docs` to validate the setup.
 
