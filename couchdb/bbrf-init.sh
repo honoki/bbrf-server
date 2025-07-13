@@ -35,4 +35,8 @@ curl -X PUT $COUCHDB"_node/_local/_config/httpd/enable_cors" -u $AUTH -d '"true"
 curl -X PUT $COUCHDB"_node/_local/_config/cors/origins" -u $AUTH -d '"https://bbrf.me"' -s > /dev/null
 curl -X PUT $COUCHDB"_node/_local/_config/cors/credentials" -u $AUTH -d '"true"' -s > /dev/null
 
+
+curl -X PUT "$COUCHDB"_node/_local/_config/cors/headers -u $AUTH -d '"accept, authorization, content-type, origin, referer"' -s > /dev/null
+curl -X PUT "$COUCHDB"_node/_local/_config/cors/methods -u $AUTH -d '"GET, PUT, POST, HEAD, DELETE"' -s > /dev/null 
+
 echo "[BBRF] Initialization complete"
