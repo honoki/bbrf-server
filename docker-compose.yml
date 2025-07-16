@@ -6,6 +6,7 @@ services:
       - COUCHDB_USER=admin
       - COUCHDB_PASSWORD=admin  # please please please replace this with a secure password
       - BBRF_PASSWORD=bbrf # please please please replace this with a secure password
+      - COUCHDB_HOSTNAME=couchdb
     volumes:
       - ./data/couchdb/1:/opt/couchdb/data
   proxy:
